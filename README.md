@@ -1,7 +1,7 @@
 # shellcoding_tutorial
 A series of increasingly difficult x64 shellcoding challenges
 
-To start each challenge, put a `./flag` file along with the challenge binary into the same directory and serve the process on a TCP port. (It's more fun if you can get a friend to host the challenge and the secret flag!) Intended solutions will be posted to [my webpage] (https://nave1337.herokuapp.com/index.html). For extra fun, try to solve the challenges without first looking at the source - i.e., starting only with the binary.
+To start each challenge, put a `./flag` file along with the challenge binary into the same directory and serve the process on a TCP port. (It's more fun if you can get a friend to host the challenge and the secret flag!) Intended solutions will be posted to [my webpage](https://nave1337.herokuapp.com/index.html). For extra fun, try to solve the challenges without first looking at the source - i.e., starting only with the binary.
 
 The goal of each challenge is only to read the contents of `./flag`. In particular, obtaining a shell is not required, although it may be easier for some challenges.
 
