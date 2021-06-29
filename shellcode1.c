@@ -5,7 +5,6 @@
 #include <sys/mman.h>
 
 int main(int argc, char** argv) {
-	int i;
 	void* code; void* stack;
 
 	// read input shellcode
