@@ -13,8 +13,8 @@ A tutorial on how to write basic x64 shellcode can be found [here](https://docs.
 ### `shellcode1`: Run of the mill
 The basic, boilerplate shellcoding challenge.
 
-### `shellcode2`: Boycotting the shell
-I don't think a shell is required to read a file!
+### `shellcode2`: F005B411
+Help! I can't have `syscall`s in my shellcode!
 
 ### `shellcode3`: Mute
 What good is a shellcode that can't talk back?
