@@ -9,10 +9,10 @@ u32 = lambda bs: struct.unpack("<I", bs)[0]
 
 class PIPE:
     def __init__(self, addr, port, debug = False):
-	if debug:
-             self.sok = SOK(addr, port, timeout = 1000)
+        if debug:
+            self.sok = SOK(addr, port, timeout = 1000)
         else:
-             self.sok = SOK(addr, port)
+            self.sok = SOK(addr, port)
 
         self.hbt = HBT(self.sok.sock)
 	return
