@@ -130,10 +130,10 @@ class HBT:
                     self.sock.send(raw_input() + '\n')
                     shellprompt()
 
-            else:
-                    clearprompt()
-                    print("WARNING: Received unknown socket %s" % (str(rsa)))
-                    shellprompt()
-#                    raise Exception("Unknown socket %s" % (str(rsa)))
+                else:
+#                    clearprompt()
+#                    print("WARNING: Received unknown socket %s" % (str(rsa)))
+#                    shellprompt()
+                    raise Exception("Unknown socket %s" % (str(rsa)))
 
         return
