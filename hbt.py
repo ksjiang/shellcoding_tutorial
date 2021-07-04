@@ -15,7 +15,11 @@ class PIPE:
             self.sok = SOK(addr, port)
 
         self.hbt = HBT(self.sok.sock)
-    return
+        return
+
+    def send(self, text):
+        self.sok.send(text)
+        return
 
     def sendline(self, text):
         self.sok.sendline(text)
@@ -52,6 +56,10 @@ class SOK:
         self.buf += s
         return
 
+    def send(self, text):
+        self.sock.send(text)
+        return
+
     def sendline(self, text):
         self.sock.send(text + '\n')
         return
@@ -64,7 +72,7 @@ class SOK:
         if sk in self.buf:
             done = True
             r = self.flush()
-    else:
+        else:
             done = False
             r = ''
 
@@ -78,7 +86,7 @@ class SOK:
         r += data
 
         cutoff = r.index(sk)
-    self.push(r[cutoff + len(sk): ])
+        self.push(r[cutoff + len(sk): ])
         return r[: cutoff + len(sk)]
 
     def recvline(self):
@@ -96,7 +104,7 @@ class HBT:
         return
 
     def run(self):
-    print("<<<Starting interactive mode...")
+        print("<<<Starting interactive mode...")
         shellprompt = lambda: self.output(self.prompt)
         clearprompt = lambda: self.output("\b \b" * len(self.prompt))
 
@@ -104,7 +112,7 @@ class HBT:
         done = False
         shellprompt()
         while not done:
-            rs, ws, es = select.select(socklist, [], [])
+            rs, _, _ = select.select(socklist, [], [])
             for rsa in rs:
                 if rsa == self.sock:
                     data = self.sock.recv(4096)
@@ -123,6 +131,9 @@ class HBT:
                     shellprompt()
 
             else:
-                    raise Exception("Unknown socket %s" % (str(rsa)))
+                    clearprompt()
+                    print("WARNING: Received unknown socket %s" % (str(rsa)))
+                    shellprompt()
+#                    raise Exception("Unknown socket %s" % (str(rsa)))
 
         return
