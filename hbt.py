@@ -15,7 +15,7 @@ class PIPE:
             self.sok = SOK(addr, port)
 
         self.hbt = HBT(self.sok.sock)
-	return
+    return
 
     def sendline(self, text):
         self.sok.sendline(text)
@@ -39,7 +39,7 @@ class SOK:
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect((addr, port))
         self.sock.settimeout(timeout)
-        self.buf = ''		#character buffer for stuff not yet accepted :)
+        self.buf = ''        #character buffer for stuff not yet accepted :)
         return
 
     # returns the characters in the bin
@@ -60,11 +60,11 @@ class SOK:
         return self.sock.recv(n)
 
     def recvuntil(self, sk):
-	# first check bin
+    # first check bin
         if sk in self.buf:
             done = True
             r = self.flush()
-	else:
+    else:
             done = False
             r = ''
 
@@ -75,10 +75,10 @@ class SOK:
                 if not data or sk in data:
                     done = True
                     
-		r += data
+        r += data
 
         cutoff = r.index(sk)
-	self.push(r[cutoff + len(sk): ])
+    self.push(r[cutoff + len(sk): ])
         return r[: cutoff + len(sk)]
 
     def recvline(self):
@@ -96,7 +96,7 @@ class HBT:
         return
 
     def run(self):
-	print("<<<Starting interactive mode...")
+    print("<<<Starting interactive mode...")
         shellprompt = lambda: self.output(self.prompt)
         clearprompt = lambda: self.output("\b \b" * len(self.prompt))
 
@@ -113,8 +113,8 @@ class HBT:
                         break
 
                     else:
-			# somewhat inelegant, but it works
-		        clearprompt()
+            # somewhat inelegant, but it works
+                clearprompt()
                         print(data)
                         shellprompt()
 
@@ -122,7 +122,7 @@ class HBT:
                     self.sock.send(raw_input() + '\n')
                     shellprompt()
 
-	        else:
+            else:
                     raise Exception("Unknown socket %s" % (str(rsa)))
 
         return
