@@ -113,7 +113,7 @@ class HBT:
                         break
 
                     else:
-                # somewhat inelegant, but it works
+                        # somewhat inelegant, but it works
                         clearprompt()
                         print(data)
                         shellprompt()
